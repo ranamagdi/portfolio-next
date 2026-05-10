@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark, .dark *));
+
+@layer base {
+  :root {
+    --color-bg: 255 255 255;
+    --color-surface: 249 250 251;
+  }
+
+  .dark {
+    --color-bg: 3 7 18;
+    --color-surface: 17 24 39;
+  }
+
+  * {
+    @apply border-gray-200 dark:border-gray-800;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-white dark:bg-gray-950 text-gray-900 dark:text-white;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  button, a, [role="button"], input[type="button"], input[type="submit"] {
+    @apply cursor-pointer;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-900;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-violet-300 dark:bg-violet-700 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-violet-400 dark:bg-violet-600;
+  }
+
+  /* Selection color */
+  ::selection {
+    @apply bg-violet-200 dark:bg-violet-800 text-violet-900 dark:text-violet-100;
+  }
+}
